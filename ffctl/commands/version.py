@@ -1,5 +1,5 @@
-import fflinter
-from fflinter.commands.command_base import CommandBase
+import ffctl
+from ffctl.commands.command_base import CommandBase
 
 
 class VersionCmd(CommandBase):
@@ -15,7 +15,7 @@ class VersionCmd(CommandBase):
         pass
 
     def _cli_version(self):
-        return fflinter.__version__
+        return ffctl.__version__
 
     def _version(self):
         return {"version": self._cli_version()}

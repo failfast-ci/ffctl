@@ -1,11 +1,11 @@
 import yaml
-from fflinter.render_jsonnet import RenderJsonnet
-from fflinter.commands.command_base import CommandBase, LoadVariables
+from ffctl.render_jsonnet import RenderJsonnet
+from ffctl.commands.command_base import CommandBase, LoadVariables
 
 
 class JsonnetCmd(CommandBase):
     name = 'jsonnet'
-    help_message = "Resolve a jsonnet file with the fflinterstd available"
+    help_message = "Resolve a jsonnet file with the ffctlstd available"
 
     def __init__(self, options):
         super(JsonnetCmd, self).__init__(options)

@@ -6,7 +6,7 @@ import re
 
 import _jsonnet
 
-import fflinter.template_filters as filters
+import ffctl.template_filters as filters
 
 logger = logging.getLogger(__name__)
 
@@ -25,8 +25,8 @@ class RenderJsonnet(object):
             raise RuntimeError('Got invalid filename (empty string).')
 
         # @TODO(ant31) Search path for both for all files
-        if rel == "fflinter.libjsonnet":
-            rel = "fflinter.libsonnet"
+        if rel == "ffctl.libjsonnet":
+            rel = "ffctl.libsonnet"
 
         if self.files is not None and rel in self.files:
             if self.files[rel] is None:

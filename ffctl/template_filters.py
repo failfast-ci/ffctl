@@ -83,14 +83,14 @@ def gen_privatekey(keytype='rsa', key='', seed=None):
 
 
 def jinja_env():
-    from fflinter.template_filters import jinja_filters
+    from ffctl.template_filters import jinja_filters
     jinjaenv = jinja2.Environment()
     jinjaenv.filters.update(jinja_filters())
     return jinjaenv
 
 
 def jinja_template(val, env=None):
-    from fflinter.utils import convert_utf8
+    from ffctl.utils import convert_utf8
     jinjaenv = jinja_env()
     template = jinjaenv.from_string(val)
     if env is not None:
@@ -104,8 +104,8 @@ def readfile(val):
 
 
 def jsonnet(val, env=None):
-    from fflinter.render_jsonnet import RenderJsonnet
-    from fflinter.utils import convert_utf8
+    from ffctl.render_jsonnet import RenderJsonnet
+    from ffctl.utils import convert_utf8
     r = RenderJsonnet()
     if env is not None:
         variables = convert_utf8(json.loads(env))

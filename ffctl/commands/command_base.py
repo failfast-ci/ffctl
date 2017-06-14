@@ -7,7 +7,7 @@ import copy
 
 import yaml
 
-from fflinter.render_jsonnet import RenderJsonnet
+from ffctl.render_jsonnet import RenderJsonnet
 
 
 class CommandBase(object):
@@ -54,7 +54,7 @@ class CommandBase(object):
         raise NotImplementedError
 
     def _render_yaml(self):
-        print(yaml.safe_dump(self._render_dict()))
+        print(yaml.safe_dump(self._render_dict(), default_flow_style=False))
 
     def _call(self):
         raise NotImplementedError

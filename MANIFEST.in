@@ -4,7 +4,7 @@ include LICENSE
 include README.md
 include requirements.txt
 include requirements_dev.txt
-graft kubecfg/jsonnet
+graft ffctl/jsonnet
 recursive-include tests *
 recursive-exclude * __pycache__
 recursive-exclude * *.py[co]

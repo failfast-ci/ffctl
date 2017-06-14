@@ -24,27 +24,27 @@ test_requirements = [
 ]
 
 setup(
-    name='fflinter',
+    name='ffctl',
     version='0.1.0',
-    description="fflinter cli",
-    long_description="fflinter py-cli",
+    description="ffctl cli",
+    long_description="ffctl py-cli",
     author="Antoine Legrand",
     author_email='2t.antoine@gmail.com',
-    url='https://github.com/ant31/fflinter',
+    url='https://github.com/ant31/ffctl',
     packages=[
-        'fflinter',
-        'fflinter.commands',
+        'ffctl',
+        'ffctl.commands',
     ],
     scripts=[
-        'bin/fflinter'
+        'bin/ffctl'
     ],
-    package_dir={'fflinter':
-                 'fflinter'},
+    package_dir={'ffctl':
+                 'ffctl'},
     include_package_data=True,
     install_requires=requirements,
     license="Apache License version 2",
     zip_safe=False,
-    keywords=['fflinter', 'fflinterpy', 'kubernetes'],
+    keywords=['ffctl', 'ffctlpy', 'kubernetes'],
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Intended Audience :: Developers',

@@ -47,23 +47,23 @@ clean-test:
 	rm -fr htmlcov/
 
 lint:
-	flake8 fflinter tests
+	flake8 ffctl tests
 
 test:
-	py.test --cov=fflinter --cov-report=html --cov-report=term-missing  --verbose
+	py.test --cov=ffctl --cov-report=html --cov-report=term-missing  --verbose
 
 tox:
 	tox
 
 coverage:
-	coverage run --source fflinter setup.py test
+	coverage run --source ffctl setup.py test
 	coverage report -m
 	coverage html
 	$(BROWSER) htmlcov/index.html
 
 docs: install
 	rm -f test1
-	sphinx-apidoc  -f -P -o docs/test1 fflinter
+	sphinx-apidoc  -f -P -o docs/test1 ffctl
 	$(MAKE) -C docs clean
 	$(MAKE) -C docs html
 	$(BROWSER) docs/_build/html/index.html
@@ -76,7 +76,7 @@ release: clean
 	python setup.py bdist_wheel upload
 
 build-ui:
-	cd fflinter-ui && gulp build --config local  --dir ../fflinter/api/ui/src
+	cd ffctl-ui && gulp build --config local  --dir ../ffctl/api/ui/src
 
 dist: clean
 	python setup.py sdist
@@ -93,13 +93,13 @@ coveralls: test
 	coveralls
 
 pylint:
-	pylint --rcfile=.pylintrc fflinter -E -r y
+	pylint --rcfile=.pylintrc ffctl -E -r y
 
 yapf:
-	yapf -r fflinter -i
+	yapf -r ffctl -i
 
 yapf-diff:
-	yapf -r fflinter -d
+	yapf -r ffctl -d
 
 yapf-test: yapf-diff
-	if [ `yapf -r fflinter -d | wc -l` -gt 0 ] ; then false ; else true ;fi
+	if [ `yapf -r ffctl -d | wc -l` -gt 0 ] ; then false ; else true ;fi

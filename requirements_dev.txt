@@ -1,0 +1,13 @@
+bumpversion>=0.5.3
+coverage>=4.0
+flake8
+futures>=3.0.5
+Jinja2>=2.8
+jsonnet>=0.8.9
+pytest>=2.9.1
+pytest-cov>=2.2.1
+pytest-flask>=0.10.0
+pytest-ordering
+python-etcd>=0.4.3
+PyYAML>=3.11
+yapf

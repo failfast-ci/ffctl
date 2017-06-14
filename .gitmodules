@@ -1,0 +1,3 @@
+[submodule "libs/kube.libsonnet"]
+	path = kube.libsonnet
+	url = git@github.com:ant31/kube.libsonnet.git

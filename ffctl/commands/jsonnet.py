@@ -5,8 +5,8 @@ from ffctl.commands.lint import gitlab_lint, lint_status
 
 
 class JsonnetCmd(CommandBase):
-    name = 'jsonnet'
-    help_message = "Resolve a jsonnet file with the ffctlstd available"
+    name = 'gen'
+    help_message = "Generate the .gitlab-ci.yml from the jsonnet"
 
     def __init__(self, options):
         super(JsonnetCmd, self).__init__(options)

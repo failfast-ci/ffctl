@@ -8,6 +8,7 @@ from ffctl.commands.jsonnet import JsonnetCmd
 from ffctl.commands.version import VersionCmd
 from ffctl.commands.lint import LintCmd
 
+
 def set_default_subparser(self, name, args=None):
     """default subparser selection. Call after setup, just before parse_args()
     name: is the name of the subparser to call by default
@@ -58,7 +59,7 @@ def get_parser(commands):
     subparsers = parser.add_subparsers(help='command help')
     for command_class in commands.values():
         command_class.add_parser(subparsers)
-    parser.set_default_subparser('jsonnet')
+    # parser.set_default_subparser('jsonnet')
     return parser
 
 

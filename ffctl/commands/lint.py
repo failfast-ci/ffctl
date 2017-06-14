@@ -1,8 +1,17 @@
-#curl --header "Content-Type: application/json" https://gitlab.example.com/api/v4/ci/lint --data '{"content": "{ \"image\": \"ruby:2.1\", \"services\": [\"postgres\"], \"before_script\": [\"gem install bundler\", \"bundle install\", \"bundle exec rake db:create\"], \"variables\": {\"DB_NAME\": \"postgres\"}, \"types\": [\"test\", \"deploy\", \"notify\"], \"rspec\": { \"script\": \"rake spec\", \"tags\": [\"ruby\", \"postgres\"], \"only\": [\"branches\"]}}"}'
-import json
-import yaml
 import requests
-from ffctl.commands.command_base import CommandBase, LoadVariables
+from ffctl.commands.command_base import CommandBase
+
+
+def gitlab_lint(host, data):
+    path = "%s/%s" % (host, "api/v4/ci/lint")
+    resp = requests.post(path, json={'content': data})
+    return resp.json()
+
+
+def lint_status(resp):
+    if 'status' not in resp or resp['status'] != 'valid':
+        return False
+    return True
 
 
 class LintCmd(CommandBase):
@@ -17,7 +26,6 @@ class LintCmd(CommandBase):
         else:
             self.filepath = options.filepath
         self.output = "yaml"
-        self.result = ''
 
     @classmethod
     def _add_arguments(cls, parser):
@@ -25,12 +33,9 @@ class LintCmd(CommandBase):
         parser.add_argument('filepath', nargs='?', default=[".gitlab-ci.yml"], help="lint file to render")
 
     def _call(self):
-        path = "%s/%s" % (self.host, "api/v4/ci/lint")
         with open(self.filepath, 'r') as filepath:
-            resp = requests.post(path, json={'content': filepath.read()})
-            result = resp.json()
-            if 'status' not in result or result['status'] != 'valid':
-                self.result = resp.json()
+            resp = gitlab_lint(self.host, filepath.read())
+            self.result = resp
 
     def _render_dict(self):
         return self.result

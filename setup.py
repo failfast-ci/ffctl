@@ -12,7 +12,6 @@ requirements = [
     'futures',
     'pyyaml',
     'jinja2>=2.8',
-    'jsonnet>=0.9.0',
 ]
 
 

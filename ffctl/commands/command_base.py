@@ -7,7 +7,7 @@ import copy
 
 import yaml
 
-from ffctl.render_jsonnet import RenderJsonnet
+
 
 
 class CommandBase(object):
@@ -100,6 +100,7 @@ class LoadVariables(argparse.Action):
             elif ext == '.json':
                 return json.loads(f.read())
             elif ext in [".jsonnet", "libjsonnet"]:
+                from ffctl.render_jsonnet import RenderJsonnet
                 r = RenderJsonnet()
                 return r.render_jsonnet(f.read())
             else:

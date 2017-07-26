@@ -1,5 +1,4 @@
 import yaml
-from ffctl.render_jsonnet import RenderJsonnet
 from ffctl.commands.command_base import CommandBase, LoadVariables
 from ffctl.commands.lint import gitlab_lint, lint_status
 
@@ -29,6 +28,7 @@ class JsonnetCmd(CommandBase):
         parser.add_argument("-H", "--host", help="gitlab host (for lint)", default="https://gitlab.com")
 
     def _call(self):
+        from ffctl.render_jsonnet import RenderJsonnet
         r = RenderJsonnet(manifestpath=self.filepath)
         tla_codes = self.variables
         p = open(self.filepath).read()

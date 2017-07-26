@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+from __future__ import print_function
 import argparse
 import os
 import sys
@@ -78,5 +79,5 @@ def cli():
         if os.getenv("FFLINTER_DEBUG", "false") == "true":
             raise
         else:
-            print exc.message
+            print(exc.message)
             #parser.error(exc.message)

@@ -65,7 +65,7 @@ class CommandBase(object):
 
     @classmethod
     def _add_registryhost_option(cls, parser):
-        parser.add_argument("-H", "--registry-host",
+        parser.add_argument("-H", "--registry-host HOST",
                             default=None,
                             help=argparse.SUPPRESS)
 

@@ -24,7 +24,7 @@ test_requirements = [
 
 setup(
     name='ffctl',
-    version='0.1.4',
+    version='0.1.5',
     description="ffctl cli",
     long_description="ffctl py-cli",
     author="Antoine Legrand",

@@ -1,26 +1,19 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-
 try:
     from setuptools import setup
 except ImportError:
     from distutils.core import setup
 
-
 requirements = [
     'futures',
     'pyyaml',
+    'jsonnet',
     'jinja2>=2.8',
 ]
 
-
-test_requirements = [
-    "flake8",
-    "pytest",
-    "pytest-cov",
-    "yapf"
-]
+test_requirements = ["flake8", "pytest", "pytest-cov", "yapf"]
 
 setup(
     name='ffctl',
@@ -34,11 +27,8 @@ setup(
         'ffctl',
         'ffctl.commands',
     ],
-    scripts=[
-        'bin/ffctl'
-    ],
-    package_dir={'ffctl':
-                 'ffctl'},
+    scripts=['bin/ffctl'],
+    package_dir={'ffctl': 'ffctl'},
     include_package_data=True,
     install_requires=requirements,
     license="Apache License version 2",
@@ -52,6 +42,4 @@ setup(
         'Programming Language :: Python :: 2.7',
     ],
     test_suite='tests',
-    tests_require=test_requirements,
-
-)
+    tests_require=test_requirements, )

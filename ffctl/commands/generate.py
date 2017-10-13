@@ -1,34 +1,35 @@
 import yaml
-from ffctl.commands.command_base import CommandBase, LoadVariables
+
 from ffctl.commands.lint import gitlab_lint, lint_status
+from ffctl.commands.command_base import LoadVariables
+
+from pyjsonnet.commands.jsonnet import JsonnetCmd as PyJsonnetCmd
 
 
-class JsonnetCmd(CommandBase):
+class GenCmd(PyJsonnetCmd):
     name = 'gen'
     help_message = "Generate the .gitlab-ci.yml from the jsonnet"
 
     def __init__(self, options):
-        super(JsonnetCmd, self).__init__(options)
-        self.variables = options.variables
+        super(GenCmd, self).__init__(options)
         self.host = options.host
         self.no_lint = options.no_lint
         self.dry = options.dry
-        if isinstance(options.filepath, list):
-            self.filepath = options.filepath[0]
-        else:
-            self.filepath = options.filepath
-        self.result = ''
+        self.result = ""
 
     @classmethod
     def _add_arguments(cls, parser):
         parser.add_argument("-x", "--variables", help="variables", default={}, action=LoadVariables)
-        parser.add_argument('filepath', nargs='?', default=[".gitlab-ci.jsonnet"], help="jsonnet file to render")
+        parser.add_argument('filepath', nargs='?', default=[".gitlab-ci.jsonnet"],
+                            help="jsonnet file to render")
         parser.add_argument('--no-lint', action="store_true", default=False, help="lint the output")
-        parser.add_argument('--dry', action="store_true", default=False, help="don't write into .gitlab-ci.yml")
-        parser.add_argument("-H", "--host", help="gitlab host (for lint)", default="https://gitlab.com")
+        parser.add_argument('--dry', action="store_true", default=False,
+                            help="don't write into .gitlab-ci.yml")
+        parser.add_argument("-H", "--host", help="gitlab host (for lint)",
+                            default="https://gitlab.com")
 
     def _call(self):
-        from ffctl.render_jsonnet import RenderJsonnet
+        from pyjsonnet.render_jsonnet import RenderJsonnet
         r = RenderJsonnet(manifestpath=self.filepath)
         tla_codes = self.variables
         p = open(self.filepath).read()

@@ -9,7 +9,8 @@ except ImportError:
 requirements = [
     'futures',
     'pyyaml',
-    'jsonnet',
+    'pyjsonnet>=0.0.4',
+    'requests',
     'jinja2>=2.8',
 ]
 
@@ -17,7 +18,7 @@ test_requirements = ["flake8", "pytest", "pytest-cov", "yapf"]
 
 setup(
     name='ffctl',
-    version='0.1.8',
+    version='0.2.0',
     description="ffctl cli",
     long_description="ffctl py-cli",
     author="Antoine Legrand",

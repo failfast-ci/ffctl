@@ -4,8 +4,10 @@ import argparse
 import os
 import sys
 
+from pyjsonnet.commands.jsonnet import JsonnetCmd
+
 from ffctl.commands.command_base import CommandBase, LoadVariables
-from ffctl.commands.jsonnet import JsonnetCmd
+from ffctl.commands.generate import GenCmd
 from ffctl.commands.version import VersionCmd
 from ffctl.commands.lint import LintCmd
 
@@ -49,6 +51,7 @@ def all_commands():
     base_cmd.update({
         VersionCmd: VersionCmd,
         JsonnetCmd.name: JsonnetCmd,
+        GenCmd.name: GenCmd,
         LintCmd.name: LintCmd,
     })
     return base_cmd

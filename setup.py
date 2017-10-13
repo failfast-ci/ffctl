@@ -9,7 +9,8 @@ except ImportError:
 requirements = [
     'futures',
     'pyyaml',
-    'jsonnet',
+    'pyjsonnet',
+    'requests',
     'jinja2>=2.8',
 ]
 

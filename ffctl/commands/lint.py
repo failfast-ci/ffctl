@@ -30,7 +30,8 @@ class LintCmd(CommandBase):
     @classmethod
     def _add_arguments(cls, parser):
         parser.add_argument("-H", "--host", help="gitlab host", default="https://gitlab.com")
-        parser.add_argument('filepath', nargs='?', default=[".gitlab-ci.yml"], help="lint file to render")
+        parser.add_argument('filepath', nargs='?', default=[".gitlab-ci.yml"],
+                            help="lint file to render")
 
     def _call(self):
         with open(self.filepath, 'r') as filepath:

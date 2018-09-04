@@ -11,3 +11,4 @@ pytest-ordering
 python-etcd>=0.4.3
 PyYAML>=3.11
 yapf
+wheel
